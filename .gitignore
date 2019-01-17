@@ -1,0 +1,2 @@
+# ignore the file that actually stores azure and resource info.
+set-envvars.ps1
