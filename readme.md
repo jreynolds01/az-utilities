@@ -14,12 +14,13 @@ You must also set the `AZ_SUB` environment variable to store the azure subscript
 
 ### Powershell env setup
 
-To set up the powershell environment, you need to install a couple of modules.
+To set up the powershell environment, you need to install a couple of modules. 
 
-- AzureRM (`Install-Module -Name AzureRM`)
-- AzureRM.Security (`Install-Module -Name AzureRM.Security -AllowPrerelease`)
+- Az.Security (`Install-Module -Name Az.Security -Force -AllowClobber`)
 
-You can install both without elevated permissions using the argument `-Scope CurrentUser`. Note that these leverage the older `AzureRM` module and not `Az`, because the Security module does not support `Az` yet.
+You either need to run that command as an Administrator, or you can install both without elevated permissions using the argument `-Scope CurrentUser`. 
+
+**NOTE** A prior version of this dependend on `AzureRm` modules, but the official package has moved to `Az`.
 
 ## Contents
 
@@ -65,6 +66,6 @@ can use the script `request-jitaccess.ps1` to request access.
 
 See above for requirements.
 
-At some point, you will need to run `Connect-AzureRmAccount` to make sure you are signed into Azure.
+At some point, you will need to run `Connect-AzAccount` to make sure you are signed into Azure.
 
 After running the powershell script, you should wait 20-30 seconds before trying to ssh into your VM - updating the rules is done asynchronously, and it takes some time to propagate.
