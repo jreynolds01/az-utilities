@@ -102,11 +102,12 @@ IF([string]::IsNullOrEmpty($location)) {
   }
 } 
 
-
-# Dependencies: Az.Security
-# 
-# wrap to check this:
-# Connect-AzAccount -SubscriptionId $subscription
+# conenct to Azure if necessary.
+$cur_context=Get-AzContext -ListAvailable
+IF([string]::IsNullOrEmpty($cur_context)){
+  Write-Host "No AzContext available. Connecting..."
+  Connect-AzAccount -SubscriptionId $subscription
+}
 
 $ip = Invoke-RestMethod http://ipinfo.io/json | Select-Object -exp ip
 $endTimeUtc = (Get-Date).AddHours(1).toUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
