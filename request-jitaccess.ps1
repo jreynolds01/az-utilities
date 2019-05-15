@@ -17,6 +17,8 @@
   Verbose produces more output (default = 0)
 .EXAMPLE
   .\request-jitaccess.ps1 -subscription 00000000-0000-0000-0000-00000 -resource_group my_rg -vmname myvmname -location eastus
+.EXAMPLE
+  .\request-jitaccess.ps1 -setenvfile .\set-envvars.ps1
 .NOTES
   Author: Jeremy Reynolds
   Date: January 17, 2019
